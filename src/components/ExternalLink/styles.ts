@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const ExternalLinkContainer = styled.a`
+interface ExternalLinkProps {
+  $variant?: "iconLeft";
+}
+
+export const ExternalLinkContainer = styled.a<ExternalLinkProps>`
   border: none;
   background: none;
   color: ${({ theme }) => theme.colors["brand-blue"]};
@@ -29,4 +33,11 @@ export const ExternalLinkContainer = styled.a`
   &:hover {
     border-color: ${({ theme }) => theme.colors["brand-blue"]};
   }
+
+  ${({ $variant }) =>
+    $variant === "iconLeft" &&
+    css`
+      flex-direction: row-reverse;
+      cursor: pointer;
+    `}
 `;
